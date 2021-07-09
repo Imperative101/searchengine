@@ -8,7 +8,8 @@ const errorElement = document.getElementById('error')
 
 function App() {
   const [state, setState] = useState({
-    result=[]
+    result=[]   // write result
+                // write character limit
   });
 
 
@@ -31,11 +32,25 @@ function App() {
         <SearchBar onSearch={onSearch} />
         <CardList results={state.results} />
 
+
+
       </div>
     </div>
 
 
+
   );
 }
+
+
+_onPress = () => {
+  if (this.state.value.length < 40) { 
+    Alert.alert('Alert', 'Maximum 40 characters');
+  return;
+}
+  this.props.onPress(this.ref._lastNativeText);
+  this.ref.setNativeProps({ text: '' });
+}
+
 
 export default App;
